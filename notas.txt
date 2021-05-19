@@ -14,3 +14,7 @@ npm init -y
 
 ------
 npm i express dotenv
+
+npm install cors protejer el servidor
+
+.use son middlewares
