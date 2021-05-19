@@ -1,0 +1,16 @@
+seccion 8
+Sección 8: REST Server -
+Configuraciones iniciales
+
+
+99..112
+
+git init 
+npm init -y
+
+.env
+.gitignore
+	node_modules
+
+------
+npm i express dotenv
