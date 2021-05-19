@@ -20,3 +20,24 @@ npm install cors protejer el servidor
 .use son middlewares
 
 git checkout -- . recuperar el repositorio
+
+git tag -a v0.0.1 lease
+
+git push --tags
+
+----------------------------------------------------------------
+$ heroku login
+Clone the repository
+Use Git to clone restrerver-node's source code to your local machine.
+
+$ heroku git:clone -a restrerver-node
+$ cd restrerver-node
+Deploy your changes
+Make some changes to the code you just cloned and deploy them to Heroku using Git.
+
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
+
+
+https://restrerver-node.herokuapp.com/
