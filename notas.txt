@@ -18,3 +18,5 @@ npm i express dotenv
 npm install cors protejer el servidor
 
 .use son middlewares
+
+git checkout -- . recuperar el repositorio
