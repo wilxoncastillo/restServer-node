@@ -35,7 +35,6 @@ const usuariosPost = async(req, res) => {
 		})
 	}
 
-
 	// Encriptar la contraseña
 	const salt = bcryptjs.genSaltSync(); //default 10 vueltas
 	usuario.password = bcryptjs.hashSync(password, salt);

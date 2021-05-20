@@ -70,3 +70,5 @@ npm install bcryptjs
 npm install express-validator
 
 OJO 124 validar con la base de datos
+
+diferencia => {} yfunction es que la funcuion me permite usar this. denro de la funcuon 
