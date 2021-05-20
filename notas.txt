@@ -71,4 +71,11 @@ npm install express-validator
 
 OJO 124 validar con la base de datos
 
-diferencia => {} yfunction es que la funcuion me permite usar this. denro de la funcuon 
+diferencia => {} yfunction es que la funcuion me permite usar this. denro de la funcuon
+
+{
+	"nombre": "wilson",
+	"correo": "wilxon@test.com",
+	"password": "123456",
+	"rol": "ADMIN_ROL"
+} 
