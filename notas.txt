@@ -66,3 +66,5 @@ mantenimiento de la colección de …
 
 npm install mongoose
 npm install bcryptjs
+
+npm install express-validator
