@@ -77,10 +77,15 @@ const usuariosPatch = (req, res) => {
 	});
 }
 
-const usuariosDelete = (req, res) => {
-	res.json({
-		msg: 'Delete Api - Controllador'
-	});
+const usuariosDelete = async(req, res) => {
+	const {id} = req.params;
+
+	//borrado fisico
+	//const usuario = await Usuario.findByIdAndDelete(id);
+
+	const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+
+	res.json(usuario);
 }
 
 
