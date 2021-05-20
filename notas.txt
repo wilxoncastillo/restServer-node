@@ -65,3 +65,4 @@ mantenimiento de la colección de …
 113...134
 
 npm install mongoose
+npm install bcryptjs
