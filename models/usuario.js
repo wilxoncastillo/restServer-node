@@ -12,6 +12,11 @@ const UsuarioSchema = Schema({
 		unique: true
 	},
 
+	password: {
+		type: String,
+		required: [true, 'El password es requerido'],
+	},
+
 	img: {
 		type: String,
 	},
