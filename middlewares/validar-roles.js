@@ -20,6 +20,26 @@ const esAdminRole = (req = request, res = response, next) => {
 	next();
 }
 
+const tieneRole = (...roles) => {
+	return (req, res = response, next) =>{
+		if(!req.usuario) {
+			return res.status(500).json({
+				msg: 'Se quiere varificar el role sin el token primero'
+			});
+		}
+
+		if(!roles.includes(req.usuario.rol)) {
+			return res.status(500).json({
+				msg: `El servicio require de estos roles ${ roles}`
+			});
+		}
+
+		next();
+	}
+}
+
+
 module.exports = {
-	esAdminRole
+	esAdminRole,
+	tieneRole
 }
