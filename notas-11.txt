@@ -1,0 +1,31 @@
+Sección 10: Autenticación de usuario
+- JWT
+
+135..150
+
+jwt.io
+
+140
+
+let expira = new Date();
+expira.setTime( nro * 1000)
+
+npm i jsonwebtoken
+
+Variable de entorno
+heroku config
+heroku config:set SECRETTOPRIVATEKEY"="w1lx@n"
+
+git branch
+
+
+git push heroku main
+
+
+heroku logs -n 100 --tail
+
+https://developers.google.com/identity/sign-in/web/sign-in
+
+https://restrerver-node.herokuapp.com/
+
+
