@@ -1,0 +1,11 @@
+Sección 10: Autenticación de usuario
+- JWT
+
+135..150
+
+jwt.io
+
+140
+
+let expira = new Date();
+expira.setTime( nro * 1000)

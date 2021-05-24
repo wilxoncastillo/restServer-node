@@ -92,3 +92,8 @@ git config --global alias.<alias-name> <git-command>
 git config --global credential.helper wincred
 
 git rm .env --cached
+
+---
+heroku config
+heroku config:set variable
+heroku config:unset variable=""
