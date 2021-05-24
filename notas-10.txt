@@ -9,3 +9,7 @@ jwt.io
 
 let expira = new Date();
 expira.setTime( nro * 1000)
+
+npm i jsonwebtoken
+
+
