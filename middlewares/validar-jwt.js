@@ -12,7 +12,7 @@ const validarJWT = async(req = request, res = response, next) => {
 	}
 
 	try{
-		const { uid} = jwt.verify(token, process.env.SECRETTOPRIVATEKEY);
+		const { uid } = jwt.verify(token, process.env.SECRETTOPRIVATEKEY);
 
 		// leer usuario que corresponde al uid
 		const usuario = await Usuario.findById(uid);
@@ -27,7 +27,8 @@ const validarJWT = async(req = request, res = response, next) => {
 		// verificar si el uid no esta marcado como borrado
 		if(!usuario.estado) {
 			return res.status(401).json({
-				msg: 'Token no valido - usuario edo:false'
+				msg: 'Token no valido - usuario edo:false',
+				usuario
 			});	
 		}
 
