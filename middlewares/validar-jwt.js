@@ -1,49 +1,56 @@
+const { response, request } = require('express');
 const jwt = require('jsonwebtoken');
-const Usuario = require('../models/usuario'); 
+
+const Usuario = require('../models/usuario');
 
 
-const validarJWT = async(req = request, res = response, next) => {
-	const token = req.header('x-token');
+const validarJWT = async( req = request, res = response, next ) => {
 
-	if(!token) {
-		return res.status(401).json({
-			msg: 'No hay token en la peticion'
-		});
-	}
+    const token = req.header('x-token');
 
-	try{
-		const { uid } = jwt.verify(token, process.env.SECRETTOPRIVATEKEY);
+    if ( !token ) {
+        return res.status(401).json({
+            msg: 'No hay token en la petición'
+        });
+    }
 
-		// leer usuario que corresponde al uid
-		const usuario = await Usuario.findById(uid);
+    try {
+        
+        const { uid } = jwt.verify( token, process.env.SECRETORPRIVATEKEY );
 
-		if(!usuario) {
-			return res.status(401).json({
-				msg: 'Token no valido - usuario no existe'
-			});
-		}
+        // leer el usuario que corresponde al uid
+        const usuario = await Usuario.findById( uid );
 
+        if( !usuario ) {
+            return res.status(401).json({
+                msg: 'Token no válido - usuario no existe DB'
+            })
+        }
 
-		// verificar si el uid no esta marcado como borrado
-		if(!usuario.estado) {
-			return res.status(401).json({
-				msg: 'Token no valido - usuario edo:false',
-				usuario
-			});	
-		}
+        // Verificar si el uid tiene estado true
+        if ( !usuario.estado ) {
+            return res.status(401).json({
+                msg: 'Token no válido - usuario con estado: false'
+            })
+        }
+        
+        
+        req.usuario = usuario;
+        next();
 
-		req.usuario = usuario;
+    } catch (error) {
 
-		next();
-	} catch (error) {
-		console.log(error);
-		res.status(401).json({
-			msg: 'token no valido...!'
-		})
-	}
+        console.log(error);
+        res.status(401).json({
+            msg: 'Token no válido'
+        })
+    }
+
 }
 
 
+
+
 module.exports = {
-	validarJWT
+    validarJWT
 }

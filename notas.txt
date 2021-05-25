@@ -97,3 +97,7 @@ git rm .env --cached
 heroku config
 heroku config:set variable
 heroku config:unset variable=""
+
+
+OJO
+git checkout
