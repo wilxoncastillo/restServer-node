@@ -52,13 +52,38 @@ const googleSignIn = async(req, res) => {
 	const { id_token } = req.body;
 
 	try {
-		const googleUser = await googleVerify( id_token);
+		const { corre, nombre, img } = await googleVerify( id_token);
 
-		console.log(googleUser);
+		let usuario = await Usuario.findOne({correo});
+
+		if(!usuario) {
+			// tengo que crearlo
+			const data = {
+				nombre,
+				correo,
+				password: ':p',
+				img,
+				google: true
+			}
+		}
+
+		usuario = new Usuario(data);
+		await Usuario.save();
+
+		// Si  eciste base deto BD y esta borrado
+		if(!usuario.estado) {
+			return res.status(401).json({
+				msg: 'Hable con el administrador usuario bloqueado'
+			}) 
+		}
+
+		// generar jwt
+		const token = await generarJWT(usuario.id);
+
 
 		res.json({
-			msg: 'Todo ok! google SignIn',
-			googleUser
+			usuario,
+			token
 		});
 
 	}catch (error){
